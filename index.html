@@ -6,45 +6,27 @@
 <title>Sistem Login</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-/* Card */
 .container {
-  background: #fff;
-  padding: 40px;
-  width: 350px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  background: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   text-align: center;
-  animation: fadeIn 0.6s ease;
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 h2 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #333;
 }
 
@@ -54,60 +36,46 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Input */
 input {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: 0.3s;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-input:focus {
-  border-color: #4e73df;
-  outline: none;
-  box-shadow: 0 0 5px rgba(78,115,223,0.4);
-}
-
-/* Button */
 button {
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #4e73df, #224abe);
+  padding: 10px;
+  background: #4e73df;
   color: white;
-  font-size: 16px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
   margin-top: 10px;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  background: #2e59d9;
 }
 
-/* Hidden sections */
 #loginForm {
   display: none;
 }
 
 #dashboard {
   display: none;
-  margin-top: 20px;
-  padding: 15px;
-  background: #e6fff2;
-  border-radius: 10px;
-  color: #0a7a3d;
+  margin-top: 15px;
+  padding: 10px;
+  background: #eafaf1;
+  color: #2e7d32;
+  border-radius: 6px;
   font-weight: bold;
-  animation: fadeIn 0.5s ease;
 }
 
 #error {
   color: red;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 5px;
 }
 </style>
@@ -115,10 +83,10 @@ button:hover {
 <body>
 
 <div class="container">
-  <h2>Selamat Datang 👋</h2>
-  <div class="subtitle">Sistem Pengurusan Pengguna</div>
+  <h2>Selamat Datang</h2>
+  <div class="subtitle">Sila log masuk</div>
 
-  <!-- Button Login (Cypress guna ini) -->
+  <!-- Button Login -->
   <button id="login">Login</button>
 
   <!-- Form Login -->
@@ -136,13 +104,11 @@ button:hover {
 </div>
 
 <script>
-// Klik button Login
 document.getElementById("login").addEventListener("click", function() {
   document.getElementById("loginForm").style.display = "block";
   this.style.display = "none";
 });
 
-// Proses Login
 document.getElementById("submit").addEventListener("click", function() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -152,7 +118,7 @@ document.getElementById("submit").addEventListener("click", function() {
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("error").innerText = "";
   } else {
-    document.getElementById("error").innerText = "Username atau password salah!";
+    document.getElementById("error").innerText = "Login gagal!";
   }
 });
 </script>
