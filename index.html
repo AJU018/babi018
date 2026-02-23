@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistem Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4e73df, #1cc88a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4e73df;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #2e59d9;
+    }
+
+    #dashboard {
+      display: none;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+
+    #error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Selamat Datang</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button id="submit">Login</button>
+
+    <div id="error"></div>
+    <div id="dashboard">Dashboard Pengguna</div>
+  </div>
+
+  <script>
+    document.getElementById("submit").addEventListener("click", function() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if(username === "Ali" && password === "password123") {
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("error").innerText = "";
+      } else {
+        document.getElementById("error").innerText = "Login gagal!";
+        document.getElementById("dashboard").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
