@@ -1,113 +1,160 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <title>Sistem Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4e73df, #1cc88a);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Login</title>
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      width: 320px;
-      text-align: center;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 
-    h2 {
-      margin-bottom: 20px;
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+/* Card */
+.container {
+  background: #fff;
+  padding: 40px;
+  width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #4e73df;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    button:hover {
-      background: #2e59d9;
-    }
+h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
 
-    #loginForm {
-      display: none;
-      margin-top: 15px;
-    }
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
 
-    #dashboard {
-      display: none;
-      margin-top: 20px;
-      color: green;
-      font-weight: bold;
-    }
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
 
-    #error {
-      color: red;
-      font-size: 14px;
-    }
-  </style>
+input:focus {
+  border-color: #4e73df;
+  outline: none;
+  box-shadow: 0 0 5px rgba(78,115,223,0.4);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4e73df, #224abe);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Hidden sections */
+#loginForm {
+  display: none;
+}
+
+#dashboard {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background: #e6fff2;
+  border-radius: 10px;
+  color: #0a7a3d;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
+}
+
+#error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+</style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Selamat Datang</h2>
+  <h2>Selamat Datang 👋</h2>
+  <div class="subtitle">Sistem Pengurusan Pengguna</div>
 
-  <!-- Button Login (untuk Cypress) -->
+  <!-- Button Login (Cypress guna ini) -->
   <button id="login">Login</button>
 
   <!-- Form Login -->
   <div id="loginForm">
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button id="submit">Submit</button>
+    <button id="submit">Masuk</button>
     <div id="error"></div>
   </div>
 
   <!-- Dashboard -->
-  <div id="dashboard">Dashboard Pengguna</div>
+  <div id="dashboard">
+    Dashboard Pengguna
+  </div>
 </div>
 
 <script>
-  // Bila klik button Login
-  document.getElementById("login").addEventListener("click", function() {
-    document.getElementById("loginForm").style.display = "block";
-  });
+// Klik button Login
+document.getElementById("login").addEventListener("click", function() {
+  document.getElementById("loginForm").style.display = "block";
+  this.style.display = "none";
+});
 
-  // Proses Login
-  document.getElementById("submit").addEventListener("click", function() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+// Proses Login
+document.getElementById("submit").addEventListener("click", function() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-    if (username === "Ali" && password === "password123") {
-      document.getElementById("dashboard").style.display = "block";
-      document.getElementById("loginForm").style.display = "none";
-      document.getElementById("error").innerText = "";
-    } else {
-      document.getElementById("error").innerText = "Login gagal!";
-      document.getElementById("dashboard").style.display = "none";
-    }
-  });
+  if (username === "Ali" && password === "password123") {
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("error").innerText = "";
+  } else {
+    document.getElementById("error").innerText = "Username atau password salah!";
+  }
+});
 </script>
 
 </body>
