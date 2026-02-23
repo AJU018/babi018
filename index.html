@@ -19,7 +19,7 @@
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      width: 300px;
+      width: 320px;
       text-align: center;
     }
 
@@ -50,6 +50,11 @@
       background: #2e59d9;
     }
 
+    #loginForm {
+      display: none;
+      margin-top: 15px;
+    }
+
     #dashboard {
       display: none;
       margin-top: 20px;
@@ -65,31 +70,45 @@
 </head>
 <body>
 
-  <div class="container">
-    <h2>Selamat Datang</h2>
+<div class="container">
+  <h2>Selamat Datang</h2>
 
+  <!-- Button Login (untuk Cypress) -->
+  <button id="login">Login</button>
+
+  <!-- Form Login -->
+  <div id="loginForm">
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button id="submit">Login</button>
-
+    <button id="submit">Submit</button>
     <div id="error"></div>
-    <div id="dashboard">Dashboard Pengguna</div>
   </div>
 
-  <script>
-    document.getElementById("submit").addEventListener("click", function() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+  <!-- Dashboard -->
+  <div id="dashboard">Dashboard Pengguna</div>
+</div>
 
-      if(username === "Ali" && password === "password123") {
-        document.getElementById("dashboard").style.display = "block";
-        document.getElementById("error").innerText = "";
-      } else {
-        document.getElementById("error").innerText = "Login gagal!";
-        document.getElementById("dashboard").style.display = "none";
-      }
-    });
-  </script>
+<script>
+  // Bila klik button Login
+  document.getElementById("login").addEventListener("click", function() {
+    document.getElementById("loginForm").style.display = "block";
+  });
+
+  // Proses Login
+  document.getElementById("submit").addEventListener("click", function() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "Ali" && password === "password123") {
+      document.getElementById("dashboard").style.display = "block";
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("error").innerText = "";
+    } else {
+      document.getElementById("error").innerText = "Login gagal!";
+      document.getElementById("dashboard").style.display = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
